@@ -311,14 +311,18 @@ class AntPlot:
 if __name__ == "__main__":
 	world = World()
 	world.place_food(0.5)
-	try:
+	timesteps=1000
+	if(len(sys.argv)>=2):
 		timesteps = int(sys.argv[1])
-	except:
-		sys.stderr.write("Usage: python ants.py [timesteps]\n")
-		sys.exit(1)
+	#try:
+	#	timesteps = int(sys.argv[1])
+	#except:
+	#	sys.stderr.write("Usage: python ants.py [timesteps]\n")
+	#	sys.exit(1)
 	for i in range(timesteps):
 		world.add_ants(10)
 		world.move_ants()
+		print i
 	plot = AntPlot(world)
 	plot.draw()
-
+	print "end"
